@@ -62,6 +62,60 @@ export default function Manifesto() {
           </p>
         </motion.div>
 
+        {/* Prochaines Étapes */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="max-w-3xl mx-auto mt-20"
+        >
+          <p className="font-mono text-xs text-indigo-600 uppercase tracking-widest font-bold mb-8 text-center">
+            Prochaines Étapes
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {[
+              {
+                num: "01",
+                label: "Autoformation",
+                text: "Progresser en continu sur Root-Me, TryHackMe et HackTheBox.",
+              },
+              {
+                num: "02",
+                label: "Stage 2027",
+                text: "Décrocher un stage en cybersécurité offensive.",
+              },
+              {
+                num: "03",
+                label: "Mastère",
+                text: "Intégrer un mastère en cybersécurité à l'issue du BUT.",
+              },
+            ].map((item, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-80px" }}
+                transition={{ duration: 0.5, delay: 0.5 + i * 0.12 }}
+                className="relative bg-anthracite rounded-xl p-6 overflow-hidden group hover:bg-anthracite/90 transition-colors duration-300"
+              >
+                {/* Numéro en filigrane */}
+                <span className="absolute -top-3 -right-1 text-7xl font-black text-white/5 leading-none select-none group-hover:text-white/8 transition-colors duration-300">
+                  {item.num}
+                </span>
+                {/* Ligne accent */}
+                <div className="w-8 h-px bg-indigo-500 mb-5" />
+                <p className="font-mono text-xs text-indigo-400 uppercase tracking-widest mb-2">
+                  {item.label}
+                </p>
+                <p className="text-sm text-white/70 leading-relaxed">
+                  {item.text}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
       </div>
     </section>
   );

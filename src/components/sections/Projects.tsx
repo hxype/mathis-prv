@@ -66,6 +66,7 @@ interface Project {
   color: string;
   logos: React.ReactNode[];
   images?: string[];
+  siteUrl?: string;
   testimonial?: {
     author: string;
     role: string;
@@ -94,6 +95,7 @@ const projects: Project[] = [
       "/images/SOA site.png",
       "/images/SOA site dashboard.png"
     ],
+    siteUrl: "https://soa-site.vercel.app/",
     testimonial: {
       author: "Dorian Prevost",
       role: "Coach Sportif & Fondateur de SOA Coaching",
@@ -264,6 +266,20 @@ export default function Projects() {
                     alt={project.title} 
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
+                  {project.siteUrl && (
+                    <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/40 backdrop-blur-[2px]">
+                      <a
+                        href={project.siteUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        data-interactive
+                        className="inline-flex items-center gap-2.5 bg-white text-anthracite font-bold text-sm px-5 py-3 rounded-full shadow-lg hover:bg-indigo-600 hover:text-white transition-all duration-200 font-mono uppercase tracking-wider"
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                        Voir le site
+                      </a>
+                    </div>
+                  )}
                 </div>
               )}
 
